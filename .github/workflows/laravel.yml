@@ -10,8 +10,6 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest
-    env:
-      ssh-key:  
     
     steps:
     - uses: actions/checkout@v2
