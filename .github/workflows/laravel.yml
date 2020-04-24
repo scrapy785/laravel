@@ -91,6 +91,7 @@ jobs:
     #  run: chmod -R 777 storage bootstrap/cache
     - name: PHP Artisan Commands
       run: |
+        php artisan key:generate
         php artisan clear-compiled
         php artisan view:clear
         php artisan cache:clear
