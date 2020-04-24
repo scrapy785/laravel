@@ -16,7 +16,12 @@ jobs:
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      run: |
+        composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        mkdir -p storage/framework/{views,cache}
+        sudo chown www-data:www-data -R storage
+        sudo chmod o+rwx -R storage
+        ls -la storage/framework
     - name: Generate key
       run: php artisan key:generat
     - name: Directory Permissions
