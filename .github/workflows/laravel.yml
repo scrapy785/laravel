@@ -14,7 +14,7 @@ jobs:
       APP_ENV: development
       #APP_KEY: base64:7BxVwn8KP+Sd28hQ9LcbV22JuIvzytMODTxiVB5X3OA
       APP_DEBUG: true
-      APP_URL: http://192.168.147.133
+      APP_URL: http://localhost
 
       LOG_CHANNEL: stack
 
