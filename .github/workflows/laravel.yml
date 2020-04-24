@@ -51,9 +51,9 @@ jobs:
         php -r "file_exists('.env') || rm -f .env;"
         echo ${{ env.APP_NAME }} >> .env
         echo ${{ env.APP_ENV }} >> .env
-        echo ${{ secrets.APP_KEY }} >> .env
+        echo ${{ env.APP_KEY }} >> .env
         echo ${{ env.APP_DEBUG }} >> .env
-        echo ${{ secrets.APP_URL }} >> .env
+        echo ${{ env.APP_URL }} >> .env
         echo ${{ env.LOG_CHANNEL }} >> .env
         echo ${{ env.DB_CONNECTION }} >> .env
         echo ${{ env.DB_HOST }} >> .env
