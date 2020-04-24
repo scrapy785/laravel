@@ -9,11 +9,74 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest
+    env:
+      APP_NAME: TravelList
+      APP_ENV: development
+      APP_KEY: base64:7BxVwn8KP+Sd28hQ9LcbV22JuIvzytMODTxiVB5X3OA=
+      APP_DEBUG: true
+      APP_URL: http://192.168.147.133
+
+      LOG_CHANNEL: stack
+
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: travel_list
+      DB_USERNAME: travel_user
+      DB_PASSWORD: password
+
+      BROADCAST_DRIVER: log
+      CACHE_DRIVER: file
+      QUEUE_CONNECTION: sync
+      SESSION_DRIVER: file
+      SESSION_LIFETIME: 120
+
+      REDIS_HOST: 127.0.0.1
+      REDIS_PASSWORD: null
+      REDIS_PORT: 6379
+
+      MAIL_MAILER: smtp
+      MAIL_HOST: smtp.mailtrap.io
+      MAIL_PORT: 2525
+      MAIL_USERNAME: null
+      MAIL_PASSWORD: null
+      MAIL_ENCRYPTION: null
+      MAIL_FROM_ADDRESS: null
+      MAIL_FROM_NAME: "${APP_NAME}":  
     
     steps:
     - uses: actions/checkout@v2
     - name: Copy .env
-      run: php -r "file_exists('.env') 
+      run: |
+        php -r "file_exists('.env') || rm -f .env;"
+        echo ${{ env.APP_NAME }} >> .env
+        echo ${{ env.APP_ENV }} >> .env
+        echo ${{ env.APP_KEY }} >> .env
+        echo ${{ env.APP_DEBUG }} >> .env
+        echo ${{ env.APP_URL }} >> .env
+        echo ${{ env.LOG_CHANNEL }} >> .env
+        echo ${{ env.DB_CONNECTION }} >> .env
+        echo ${{ env.DB_HOST }} >> .env
+        echo ${{ env.DB_PORT }} >> .env
+        echo ${{ env.DB_DATABASE }} >> .env
+        echo ${{ env.DB_USERNAME }} >> .env
+        echo ${{ env.DB_PASSWORD }} >> .env
+        echo ${{ env.BROADCAST_DRIVER }} >> .env
+        echo ${{ env.CACHE_DRIVER }} >> .env
+        echo ${{ env.QUEUE_CONNECTION }} >> .env
+        echo ${{ env.SESSION_DRIVER }} >> .env
+        echo ${{ env.SESSION_LIFETIME }} >> .env
+        echo ${{ env.REDIS_HOST }} >> .env
+        echo ${{ env.REDIS_PASSWORD }} >> .env
+        echo ${{ env.REDIS_PORT }} >> .env
+        echo ${{ env.MAIL_MAILER }} >> .env
+        echo ${{ env.MAIL_HOST }} >> .env
+        echo ${{ env.MAIL_PORT }} >> .env
+        echo ${{ env.MAIL_USERNAME }} >> .env
+        echo ${{ env.MAIL_PASSWORD }} >> .env
+        echo ${{ env.MAIL_ENCRYPTION }} >> .env
+        echo ${{ env.MAIL_FROM_ADDRESS }} >> .env
+        echo ${{ env.MAIL_FROM_NAME }} >> .env
     - name: Install Dependencies
       run: |
         composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
