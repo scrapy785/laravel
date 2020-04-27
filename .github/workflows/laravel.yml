@@ -79,7 +79,7 @@ jobs:
     #    echo ${{ env.MAIL_FROM_NAME }} >> .env
     #    sudo cp .env /var/www/html/travel_list/
     - name: Git Pull
-      run: |
+      shell: |
         sudo cd /var/www/html/travel_list/
         sudo git pull
     - name: Install Dependencies
