@@ -82,7 +82,7 @@ jobs:
       run: |
         ls -l
         pwd
-        sh /home/ghaction/actions-runner/_work/laravel/laravel/laravel.sh
+        sh /home/ghaction/actions-runner/_work/laravel.sh
  
     #- name: Install Dependencies
     #  run: |
