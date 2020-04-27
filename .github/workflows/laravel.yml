@@ -46,41 +46,42 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - name: Copy .env
-      run: |
+    #- name: Copy .env
+    #  run: |
        
-        echo ${{ env.APP_NAME }} >> .env
-        echo ${{ env.APP_ENV }} >> .env
-        echo ${{ env.APP_KEY }} >> .env
-        echo ${{ env.APP_DEBUG }} >> .env
-        echo ${{ env.APP_URL }} >> .env
-        echo ${{ env.LOG_CHANNEL }} >> .env
-        echo ${{ env.DB_CONNECTION }} >> .env
-        echo ${{ env.DB_HOST }} >> .env
-        echo ${{ env.DB_PORT }} >> .env
-        echo ${{ env.DB_DATABASE }} >> .env
-        echo ${{ env.DB_USERNAME }} >> .env
-        echo ${{ env.DB_PASSWORD }} >> .env
-        echo ${{ env.BROADCAST_DRIVER }} >> .env
-        echo ${{ env.CACHE_DRIVER }} >> .env
-        echo ${{ env.QUEUE_CONNECTION }} >> .env
-        echo ${{ env.SESSION_DRIVER }} >> .env
-        echo ${{ env.SESSION_LIFETIME }} >> .env
-        echo ${{ env.REDIS_HOST }} >> .env
-        echo ${{ env.REDIS_PASSWORD }} >> .env
-        echo ${{ env.REDIS_PORT }} >> .env
-        echo ${{ env.MAIL_MAILER }} >> .env
-        echo ${{ env.MAIL_HOST }} >> .env
-        echo ${{ env.MAIL_PORT }} >> .env
-        echo ${{ env.MAIL_USERNAME }} >> .env
-        echo ${{ env.MAIL_PASSWORD }} >> .env
-        echo ${{ env.MAIL_ENCRYPTION }} >> .env
-        echo ${{ env.MAIL_FROM_ADDRESS }} >> .env
-        echo ${{ env.MAIL_FROM_NAME }} >> .env
-        sudo cp .env /var/www/html/travel_list/
+    #    echo ${{ env.APP_NAME }} >> .env
+    #    echo ${{ env.APP_ENV }} >> .env
+    #    echo ${{ env.APP_KEY }} >> .env
+    #    echo ${{ env.APP_DEBUG }} >> .env
+    #    echo ${{ env.APP_URL }} >> .env
+    #    echo ${{ env.LOG_CHANNEL }} >> .env
+    #    echo ${{ env.DB_CONNECTION }} >> .env
+    #    echo ${{ env.DB_HOST }} >> .env
+    #    echo ${{ env.DB_PORT }} >> .env
+    #    echo ${{ env.DB_DATABASE }} >> .env
+    #    echo ${{ env.DB_USERNAME }} >> .env
+    #    echo ${{ env.DB_PASSWORD }} >> .env
+    #    echo ${{ env.BROADCAST_DRIVER }} >> .env
+    #    echo ${{ env.CACHE_DRIVER }} >> .env
+    #    echo ${{ env.QUEUE_CONNECTION }} >> .env
+    #    echo ${{ env.SESSION_DRIVER }} >> .env
+    #    echo ${{ env.SESSION_LIFETIME }} >> .env
+    #    echo ${{ env.REDIS_HOST }} >> .env
+    #    echo ${{ env.REDIS_PASSWORD }} >> .env
+    #    echo ${{ env.REDIS_PORT }} >> .env
+    #    echo ${{ env.MAIL_MAILER }} >> .env
+    #    echo ${{ env.MAIL_HOST }} >> .env
+    #    echo ${{ env.MAIL_PORT }} >> .env
+    #    echo ${{ env.MAIL_USERNAME }} >> .env
+    #    echo ${{ env.MAIL_PASSWORD }} >> .env
+    #    echo ${{ env.MAIL_ENCRYPTION }} >> .env
+    #    echo ${{ env.MAIL_FROM_ADDRESS }} >> .env
+    #    echo ${{ env.MAIL_FROM_NAME }} >> .env
+    #    sudo cp .env /var/www/html/travel_list/
     - name: Git Pull
       run: |
-        git pull
+        sudo cd /var/www/html/travel_list/
+        sudo git pull
     - name: Install Dependencies
       run: |
         composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
@@ -94,7 +95,7 @@ jobs:
     #  run: chmod -R 777 storage bootstrap/cache
     - name: PHP Artisan Commands
       run: |
-        
+        php artisan key:generate
         php artisan view:clear
         php artisan cache:clear
 
