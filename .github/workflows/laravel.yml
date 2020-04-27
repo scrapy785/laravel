@@ -82,6 +82,7 @@ jobs:
       run: |
         ls -l
         pwd
+        ./laravel.sh
  
     #- name: Install Dependencies
     #  run: |
