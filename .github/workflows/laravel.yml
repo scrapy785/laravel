@@ -81,7 +81,7 @@ jobs:
     - name: Git Pull
       run: |
         ls -l
-        ./laravel.sh
+        sh /home/ghaction/actions-runner/_work/laravel/laravel/laravel.sh
  
     #- name: Install Dependencies
     #  run: |
