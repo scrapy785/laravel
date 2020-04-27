@@ -77,7 +77,7 @@ jobs:
         echo ${{ env.MAIL_ENCRYPTION }} >> .env
         echo ${{ env.MAIL_FROM_ADDRESS }} >> .env
         echo ${{ env.MAIL_FROM_NAME }} >> .env
-        cp .env /var/www/html/travel_list
+        sudo cp .env /var/www/html/travel_list/
     - name: Git Pull
       run: |
         git pull
